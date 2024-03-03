@@ -1,0 +1,6 @@
+<h1>Import Movies</h1>
+<p>import a CSV file containing the header "title", "director"</p>
+<%= form_tag movies_import_csv_path, multipart: true do %>
+  <%= file_field_tag :movies_csv %>
+  <%= submit_tag 'Import CSV' %>
+<% end %>
