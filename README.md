@@ -1,45 +1,38 @@
-### Desafio para vaga de BackEnd - Foco em Ruby On Rails:
-
-Objetivo do Desafio:
-
-O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o framework Ruby On Rails, bem como quaisquer integrações necessárias, a implementação de funcionalidades que executam em segundo plano de forma síncrona, a escrita de testes e a criação de uma documentação clara.
+### MovieApp
+O MovieApp é um app simples em ruby on rails para adicionar filmes e notas.
 
 #### Requisitos:
 
 - ruby-3.1.4
 - sqlite3
+- redis-7.0
 
-Clone o projeto e ao executar:
-
+Clone o projeto e execute:
 ```ruby
 bundle install
 rails db:migrate
 rails db:seed
 ```
+
+Depois execute (para subir redis o sidekiq e o app do rails):
+``` shell
+redis-server && bundle exec sidekiq && rails server
+```
+
+#### O que você terá:
 Será configurado uma aplicação rails contando com as seguintes funcionalidades:
 - Usuário padrão admin@rotten e senha admin
-- Página de login
-- Rota para criação de novos usuários
-- Rota para cadastrar novo filme
-- Rota para dar nota nos filmes
-- Exibir a média das notas de cada filme
+- Página de login (/)
+- Rota para criação de novos usuários (/users/new)
+- Rota para cadastrar novo filme (/movies/new)
+- Rota para cadastrar varios filmes (/movies/import)
+- Rota para dar nota nos filmes (/movies)
+- Rota para dar varias notas nos filmes (/movies/)
+- Exibir a média das notas de cada filme (/movies/scores_import)
 
 
-#### Desafio:
-
-- Criar uma rota para importar em massa vários filmes
-  - Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
-- Criar uma rota para submeter notas em massa para vários filmes
-  - Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
-- As tarefas acima **devem ser executadas em segundo plano**
-  - Recomendamos usar o [Sidekiq](https://github.com/sidekiq/sidekiq) para gerenciar as tarefas em segundo plano, mas você pode escolher outra solução
-
-#### Pontos Extras:
-- Criar testes para as rotas da API e models da aplicação
-  - Recomendamos usar o [Rspec](https://semaphoreci.com/community/tutorials/getting-started-with-rspec) para os testes, mas você pode escolher outra solução
-
-
-#### Entrega:
-
-No README.md descreva as instruções sobre como executar o projeto, configurar variáveis de ambiente e executar os testes.
-Ao finalizar, forneça um link para o repositório do GitHub contendo o código-fonte e a documentação, enviado para o email vagas{at}oxeanbits{dot}com
+# Pontos de melhoria:
+- Adicionar testes para todos os casos de uso;
+- Melhorar sistema de importação adicionando os filmes em lotes;
+- Adicionar notificações em tempo real mostrando o status das importações;
+- Melhorar HTML e CSS da aplicação.
