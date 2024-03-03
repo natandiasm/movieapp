@@ -1,5 +1,7 @@
 <h1>Movies</h1>
 <%= link_to "Add new", new_movie_path %>
+<%= link_to "Import movies", movies_import_path %>
+<%= link_to "Import scores", import_score_path %>
 <% @movies.each do |movie| %>
   <div>
     <h2><%= movie.title %></h2>
