@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% if flash[:error].present? %>
+      <div class="error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <% if flash[:notice].present? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <nav>
       <% if current_user %>
         <% if current_user.admin? %>
